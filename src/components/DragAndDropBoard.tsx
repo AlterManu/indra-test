@@ -35,7 +35,7 @@ const DragAndDropBoard = () => {
   };
 
   return (
-    <div className="w-full px-5">
+    <div className="w-full px-5 cursor-default">
       <DndProvider backend={HTML5Backend}>
         {products.map((product, rowIndex) => (
           <Row

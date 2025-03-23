@@ -1,6 +1,6 @@
 import { useDrag, useDrop } from "react-dnd";
 import { ItemModel, ItemType } from "../models/item";
-import minusIcon from "../assets/img/minus.png";
+import minusIcon from "../assets/img/minus2.png";
 import { useProducts } from "../context/useProducts";
 
 const Item = ({
@@ -54,7 +54,7 @@ const Item = ({
         onClick={() => deleteItem(rowIndex, itemIndex)}
         src={minusIcon}
         alt="minus"
-        className="w-8 absolute -top-3 left-8 cursor-pointer z-10"
+        className="w-10 absolute top-2 right-12 cursor-pointer z-10"
       />
 
       <div className="w-full">
