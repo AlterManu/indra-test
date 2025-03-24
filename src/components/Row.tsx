@@ -2,6 +2,8 @@ import { useDrag, useDrop } from "react-dnd";
 import { ItemType, RowModel, templateTypes } from "../models/item";
 import Item from "./Item";
 import { useProducts } from "../context/useProducts";
+import { useRef } from "react";
+import dragIcon from "../assets/img/drag.png";
 
 const Row = ({
   row,
@@ -21,6 +23,8 @@ const Row = ({
 }) => {
   // * Hooks
   const { addItem, deleteRow, changeTemplate } = useProducts();
+  const rowRef = useRef<HTMLDivElement | null>(null);
+  const dragRef = useRef<HTMLSpanElement | null>(null); // ✅ Ref para el icono arrastrable
 
   const [{ isDragging }, drag] = useDrag({
     type: ItemType.ROW,
@@ -38,18 +42,23 @@ const Row = ({
     },
   });
 
+  drag(dragRef);
+  drop(rowRef);
+
   return (
     <div
-      ref={(node) => {
-        if (node) {
-          drag(drop(node));
-        }
-      }}
+      ref={rowRef}
       className="relative flex mb-4"
       style={{ opacity: isDragging ? 0.5 : 1 }}
     >
+      <span
+        ref={dragRef}
+        className="absolute top-1/2 -left-10 -translate-y-1/2 cursor-grab "
+      >
+        <img className="w-8" src={dragIcon}></img>
+      </span>
       <div
-        className="w-full flex px-16 border-2 border-dashed border-[rgba(0,0,0,0.3)]"
+        className="w-full flex px-16 border-1 border-dashed border-[rgba(0,0,0,0.3)]"
         style={{ placeContent: templateTypes[row.template].place }}
       >
         {row.items.map((item, itemIndex) => (
