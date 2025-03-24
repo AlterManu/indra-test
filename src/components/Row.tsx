@@ -58,7 +58,7 @@ const Row = ({
         <img className="w-8" src={dragIcon}></img>
       </span>
       <div
-        className="w-full flex px-16 border-1 border-dashed border-[rgba(0,0,0,0.3)]"
+        className="w-full flex border-1 border-dashed border-[rgba(0,0,0,0.3)]"
         style={{ placeContent: templateTypes[row.template].place }}
       >
         {row.items.map((item, itemIndex) => (

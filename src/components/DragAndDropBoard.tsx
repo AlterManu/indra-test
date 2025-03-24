@@ -35,7 +35,7 @@ const DragAndDropBoard = () => {
   };
 
   return (
-    <div className="w-full px-5 cursor-default">
+    <div className="w-full px-10 mt-8 cursor-default">
       <DndProvider backend={HTML5Backend}>
         {products.map((product, rowIndex) => (
           <Row
@@ -47,6 +47,8 @@ const DragAndDropBoard = () => {
           />
         ))}
       </DndProvider>
+
+      {/* Botón para añadir fila */}
       <div className="w-full flex justify-center mt-5">
         <button
           onClick={addRow}

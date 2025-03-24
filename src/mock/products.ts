@@ -15,10 +15,10 @@ export const mockProducts = [
   },
   {
     id: 2,
-    name: "JEANS FLARE FIT CREMALLERAS",
+    name: "JEANS WIDE LEG",
     image:
-      "https://static.zara.net/assets/public/052f/ac97/bd194a4a8240/70e03df17ae0/08062422427-a4/08062422427-a4.jpg?ts=1742547464345&w=268",
-    price: "49,95 EUR",
+      "https://static.zara.net/assets/public/10cd/64a0/81804bcead08/4bef676816b2/09942430406-p/09942430406-p.jpg?ts=1737712160651&w=268",
+    price: "29,95 EUR",
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ export const mockProducts = [
   },
   {
     id: 4,
-    name: "JEANS STRAIGHT FIT SALPICADURAS PINTURA",
+    name: "JEANS STRAIGHT FIT",
     image:
       "https://static.zara.net/assets/public/132a/1cb1/71274b179b74/d671eefbc3fd/06045492427-a4/06045492427-a4.jpg?ts=1742295759608&w=268",
     price: "39,95 EUR",
@@ -43,14 +43,14 @@ export const mockProducts = [
   },
   {
     id: 6,
-    name: "JEANS STRAIGHT FIT SALPICADURAS PINTURA",
+    name: "JEANS STRAIGHT FIT",
     image:
       "https://static.zara.net/assets/public/a68f/743c/75904ce3b62f/f09fc3538ab8/00840495251-a5/00840495251-a5.jpg?ts=1742295757645&w=268",
     price: "39,95 EUR",
   },
   {
     id: 7,
-    name: "JEANS STRAIGHT FIT SALPICADURAS PINTURA",
+    name: "JEANS STRAIGHT FIT",
     image:
       "https://static.zara.net/assets/public/bf15/6724/a52c48209e20/58a4787ddccb/00840495251-080-a4/00840495251-080-a4.jpg?ts=1742562749628&w=268",
     price: "39,95 EUR",

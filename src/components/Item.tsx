@@ -2,6 +2,8 @@ import { useDrag, useDrop } from "react-dnd";
 import { ItemModel, ItemType } from "../models/item";
 import minusIcon from "../assets/img/minus2.png";
 import { useProducts } from "../context/useProducts";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 const MAX_ITEMS = 3;
 
@@ -23,6 +25,7 @@ const Item = ({
 }) => {
   // * Hooks
   const { products, deleteItem } = useProducts();
+  const [isHover, setIsHover] = useState(false);
 
   const [{ isDragging }, drag] = useDrag({
     type: ItemType.ITEM,
@@ -54,29 +57,44 @@ const Item = ({
           drag(drop(node));
         }
       }}
-      className="w-1/3 px-10 cursor-grab relative"
+      className="w-1/3 flex justify-center relative cursor-grab"
       style={{ opacity: isDragging ? 0.5 : 1 }}
     >
-      {/* Quitar item */}
-      <img
-        onClick={() => deleteItem(rowIndex, itemIndex)}
-        src={minusIcon}
-        alt="minus"
-        className="w-10 absolute top-2 right-12 cursor-pointer z-10"
-      />
-
-      <div className="w-full">
-        {/* Imagen */}
-        <img
-          src={item.image}
-          alt={item.name}
-          className="w-full h-full object-contain"
+      <div
+        className="w-fit flex flex-col items-center"
+        onMouseOver={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
+      >
+        <motion.div
+          className="w-full h-full bg-[rgba(0,0,0,0.2)] absolute top-0 left-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHover ? 1 : 0 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
         />
-        {/* Info */}
-      </div>
-      <div className="h-[10%]">
-        <h3>{item.name}</h3>
-        <h3>{item.price}</h3>
+        <div className="w-full h-[35vh]">
+          {/* Quitar item */}
+          <motion.img
+            onClick={() => deleteItem(rowIndex, itemIndex)}
+            src={minusIcon}
+            alt="minus"
+            className="w-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHover ? 1 : 0 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+          />
+
+          {/* Imagen */}
+          <img
+            src={item.image}
+            alt={item.name}
+            className="w-full h-full object-contain"
+          />
+          {/* Info */}
+        </div>
+        <div className="w-full h-[5vh]">
+          <h3>{item.name}</h3>
+          <h3>{item.price}</h3>
+        </div>
       </div>
     </div>
   );
