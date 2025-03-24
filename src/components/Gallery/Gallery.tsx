@@ -1,7 +1,8 @@
-import { useProducts } from "../context/useProducts";
+import { useProducts } from "../../context/useProducts";
 import GalleryRow from "./GalleryRow";
 
 export default function Gallery() {
+  // * Hooks
   const { products } = useProducts();
 
   return (

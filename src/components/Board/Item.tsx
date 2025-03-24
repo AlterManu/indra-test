@@ -1,7 +1,7 @@
 import { useDrag, useDrop } from "react-dnd";
-import { ItemModel, ItemType } from "../models/models";
-import minusIcon from "../assets/img/trash.png";
-import { useProducts } from "../context/useProducts";
+import { ItemModel, ItemType } from "../../models/models";
+import minusIcon from "../../assets/img/trash.png";
+import { useProducts } from "../../context/useProducts";
 import { useState } from "react";
 import { motion } from "framer-motion";
 

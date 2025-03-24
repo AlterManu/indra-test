@@ -1,7 +1,7 @@
-import DragAndDropBoard from "../components/DragAndDropBoard";
+import DragAndDropBoard from "../components/Board/DragAndDropBoard";
 import EditorButton from "../components/EditorButton";
-import Gallery from "../components/Gallery";
-import ZoomContainer from "../components/ZoomContainer";
+import Gallery from "../components/Gallery/Gallery";
+import ZoomContainer from "../components/Board/ZoomContainer";
 import { useProducts } from "../context/useProducts";
 import { modes } from "../models/models";
 

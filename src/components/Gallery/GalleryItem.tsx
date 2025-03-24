@@ -1,4 +1,4 @@
-import { ItemModel } from "../models/models";
+import { ItemModel } from "../../models/models";
 
 export default function GalleryItem({ item }: { item: ItemModel }) {
   return (

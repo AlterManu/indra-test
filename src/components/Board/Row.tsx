@@ -1,12 +1,12 @@
 import { useDrag, useDrop } from "react-dnd";
-import { ItemType, RowModel, templateTypes } from "../models/models";
+import { ItemType, RowModel, templateTypes } from "../../models/models";
 import Item from "./Item";
-import { useProducts } from "../context/useProducts";
+import { useProducts } from "../../context/useProducts";
 import { useRef } from "react";
-import dragIcon from "../assets/img/drag.png";
-import ButtonAddElement from "./Buttons/ButtonAddElement";
-import ButtonDeleteRow from "./Buttons/ButtonDeleteRow";
-import ButtonChangeTemplate from "./Buttons/ButtonChangeTemplate";
+import dragIcon from "../../assets/img/drag.png";
+import ButtonAddElement from "../Buttons/ButtonAddElement";
+import ButtonDeleteRow from "../Buttons/ButtonDeleteRow";
+import ButtonChangeTemplate from "../Buttons/ButtonChangeTemplate";
 
 const Row = ({
   row,

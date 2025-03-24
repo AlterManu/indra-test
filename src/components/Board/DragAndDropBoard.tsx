@@ -1,9 +1,9 @@
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Row from "./Row";
-import { RowModel } from "../models/models";
-import { useProducts } from "../context/useProducts";
-import ButtonAddRow from "./Buttons/ButtonAddRow";
+import { RowModel } from "../../models/models";
+import { useProducts } from "../../context/useProducts";
+import ButtonAddRow from "../Buttons/ButtonAddRow";
 
 const DragAndDropBoard = () => {
   // * Hooks
