@@ -3,15 +3,13 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { RowModel } from "../../models/models";
 
-export default function ButtonAddElement({
-  addItem,
-  rowIndex,
-  row,
-}: {
+interface BtnProps {
   addItem: (rowIndex: number) => void;
   rowIndex: number;
   row: RowModel;
-}) {
+}
+
+export default function ButtonAddElement({ addItem, rowIndex, row }: BtnProps) {
   const [isHover, setIsHover] = useState(false);
   const disabled = row.items.length === 3;
 

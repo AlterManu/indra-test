@@ -23,9 +23,11 @@ const initialData = [
 ];
 
 export const ProductsProvider = ({ children }: { children: ReactNode }) => {
+  // * Hooks
   const [products, setProducts] = useState<RowModel[]>(initialData);
-  const [mode, setMode] = useState<modes>(modes.EDITOR);
+  const [mode, setMode] = useState<modes>(modes.LIVE);
 
+  // * Methods
   const addRow = () => {
     const updatedRows = [...products];
     const randomIndex = Math.floor(Math.random() * 20);

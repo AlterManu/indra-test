@@ -8,12 +8,7 @@ import ButtonChangeTemplate from "../Buttons/ButtonChangeTemplate";
 import ButtonDeleteRow from "../Buttons/ButtonDeleteRow";
 import Item from "./Item";
 
-const Row = ({
-  row,
-  rowIndex,
-  moveRow,
-  moveItem,
-}: {
+interface RowProps {
   row: RowModel;
   rowIndex: number;
   moveRow: (dragIndex: number, hoverIndex: number) => void;
@@ -23,7 +18,9 @@ const Row = ({
     hoverRowIndex: number,
     hoverItemIndex: number
   ) => void;
-}) => {
+}
+
+export default function Row({ row, rowIndex, moveRow, moveItem }: RowProps) {
   // * Hooks
   const { addItem, deleteRow } = useProducts();
   const rowRef = useRef<HTMLDivElement | null>(null);
@@ -91,6 +88,4 @@ const Row = ({
       <ButtonDeleteRow deleteRow={deleteRow} rowIndex={rowIndex} />
     </div>
   );
-};
-
-export default Row;
+}

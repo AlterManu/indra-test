@@ -7,12 +7,7 @@ import { motion } from "framer-motion";
 
 const MAX_ITEMS = 3;
 
-const Item = ({
-  item,
-  rowIndex,
-  itemIndex,
-  moveItem,
-}: {
+interface Props {
   item: ItemModel;
   rowIndex: number;
   itemIndex: number;
@@ -22,7 +17,9 @@ const Item = ({
     rowIndex: number,
     itemIndex: number
   ) => void;
-}) => {
+}
+
+export default function Item({ item, rowIndex, itemIndex, moveItem }: Props) {
   // * Hooks
   const { products, deleteItem } = useProducts();
   const [isHover, setIsHover] = useState(false);
@@ -98,6 +95,4 @@ const Item = ({
       </div>
     </div>
   );
-};
-
-export default Item;
+}

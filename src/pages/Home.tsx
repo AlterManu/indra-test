@@ -5,6 +5,7 @@ import ZoomContainer from "../components/Board/ZoomContainer";
 import { useProducts } from "../context/useProducts";
 import { modes } from "../models/models";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const { mode } = useProducts();
@@ -30,19 +31,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="w-full py-3 bg-gray-100">
-        <p className="text-center text-gray-500 text-sm">
-          © 2025 - Creado y diseñado por{" "}
-          <a
-            className="text-blue-500 font-bold"
-            href="https://altermanu.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Manu
-          </a>
-        </p>
-      </footer>
+      <Footer />
     </>
   );
 }
