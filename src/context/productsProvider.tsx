@@ -6,7 +6,7 @@ import {
   templates,
   templatesIndexes,
   templateTypes,
-} from "../models/item";
+} from "../models/models";
 import { ProductsContext } from "./productsContext";
 
 const initialData = [

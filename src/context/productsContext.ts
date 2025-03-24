@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { modes, RowModel } from "../models/item";
+import { modes, RowModel } from "../models/models";
 
 interface ProductsContextValue {
   products: RowModel[];

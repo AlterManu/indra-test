@@ -1,9 +1,12 @@
 import { useDrag, useDrop } from "react-dnd";
-import { ItemType, RowModel, templateTypes } from "../models/item";
+import { ItemType, RowModel, templateTypes } from "../models/models";
 import Item from "./Item";
 import { useProducts } from "../context/useProducts";
 import { useRef } from "react";
 import dragIcon from "../assets/img/drag.png";
+import ButtonAddElement from "./Buttons/ButtonAddElement";
+import ButtonDeleteRow from "./Buttons/ButtonDeleteRow";
+import ButtonChangeTemplate from "./Buttons/ButtonChangeTemplate";
 
 const Row = ({
   row,
@@ -22,9 +25,9 @@ const Row = ({
   ) => void;
 }) => {
   // * Hooks
-  const { addItem, deleteRow, changeTemplate } = useProducts();
+  const { addItem, deleteRow } = useProducts();
   const rowRef = useRef<HTMLDivElement | null>(null);
-  const dragRef = useRef<HTMLSpanElement | null>(null); // ✅ Ref para el icono arrastrable
+  const dragRef = useRef<HTMLSpanElement | null>(null);
 
   const [{ isDragging }, drag] = useDrag({
     type: ItemType.ROW,
@@ -73,36 +76,13 @@ const Row = ({
       </div>
 
       {/* Botón para añadir elemento random */}
-      <div className="absolute top-1/3 right-0 -translate-y-1/2 translate-x-1/2">
-        <button
-          onClick={() => addItem(rowIndex)}
-          className="bg-slate-500 px-4 py-2 rounded-full cursor-pointer text-white"
-          disabled={row.items.length === 3}
-          style={{ opacity: row.items.length === 3 ? 0.5 : 1 }}
-        >
-          + Añadir elemento
-        </button>
-      </div>
+      <ButtonAddElement addItem={addItem} row={row} rowIndex={rowIndex} />
 
       {/* Botón para cambiar de plantilla */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2">
-        <button
-          onClick={() => changeTemplate(row)}
-          className="bg-slate-500 px-4 py-2 rounded-full cursor-pointer text-white"
-        >
-          {`Plantilla nº${templateTypes[row.template].index + 1}`}
-        </button>
-      </div>
+      <ButtonChangeTemplate row={row} />
 
       {/* Botón para eliminar fila */}
-      <div className="absolute top-2/3 right-0 -translate-y-1/2 translate-x-1/2">
-        <button
-          onClick={() => deleteRow(rowIndex)}
-          className="bg-slate-500 px-4 py-2 rounded-full cursor-pointer text-white"
-        >
-          - Eliminar fila
-        </button>
-      </div>
+      <ButtonDeleteRow deleteRow={deleteRow} rowIndex={rowIndex} />
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import { ReactNode, useState } from "react";
 import { motion } from "framer-motion";
+import { LuZoomIn, LuZoomOut } from "react-icons/lu";
+import { RxReset } from "react-icons/rx";
 
 const ZoomContainer = ({ children }: { children: ReactNode }) => {
   // * Hooks
@@ -15,27 +17,27 @@ const ZoomContainer = ({ children }: { children: ReactNode }) => {
       {/* Botones de control */}
       <div className="fixed top-4 left-4 z-10 flex gap-2">
         <button
-          className="bg-slate-500 px-4 py-2 rounded-full cursor-pointer text-white"
+          className="flex items-center justify-center bg-blue-400 w-8 h-8 rounded-full cursor-pointer text-white"
           onClick={zoomIn}
           disabled={scale === 1}
           style={{ opacity: scale === 1 ? 0.5 : 1 }}
         >
-          Acercar
+          <LuZoomIn size={20} />
         </button>
         <button
-          className="bg-slate-500 px-4 py-2 rounded-full cursor-pointer text-white"
+          className="flex items-center justify-center bg-blue-400 w-8 h-8 rounded-full cursor-pointer text-white"
           disabled={scale === 0.5}
           style={{ opacity: scale === 0.5 ? 0.5 : 1 }}
           onClick={zoomOut}
         >
-          Alejar
+          <LuZoomOut size={20} />
         </button>
         <button
-          className="bg-slate-500 px-4 py-2 rounded-full cursor-pointer text-white"
+          className="flex items-center justify-center bg-blue-400 w-8 h-8 rounded-full cursor-pointer text-white"
           onClick={reset}
           style={{ opacity: scale === 1 ? 0.5 : 1 }}
         >
-          Reiniciar
+          <RxReset size={20} />
         </button>
       </div>
 

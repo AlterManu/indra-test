@@ -1,4 +1,4 @@
-import { ItemModel, RowModel, templateTypes } from "../models/item";
+import { ItemModel, RowModel, templateTypes } from "../models/models";
 import GalleryItem from "./GalleryItem";
 
 export default function GalleryRow({ row }: { row: RowModel }) {

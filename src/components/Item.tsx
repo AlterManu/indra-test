@@ -1,6 +1,6 @@
 import { useDrag, useDrop } from "react-dnd";
-import { ItemModel, ItemType } from "../models/item";
-import minusIcon from "../assets/img/minus2.png";
+import { ItemModel, ItemType } from "../models/models";
+import minusIcon from "../assets/img/trash.png";
 import { useProducts } from "../context/useProducts";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -24,7 +24,7 @@ const Item = ({
   ) => void;
 }) => {
   // * Hooks
-  const { products, deleteItem } = useProducts();
+  const { products, deleteItem, deleteRow } = useProducts();
   const [isHover, setIsHover] = useState(false);
 
   const [{ isDragging }, drag] = useDrag({
@@ -46,6 +46,11 @@ const Item = ({
         moveItem(dragged.rowIndex, dragged.itemIndex, rowIndex, itemIndex);
         dragged.rowIndex = rowIndex;
         dragged.itemIndex = itemIndex;
+
+        // TODO: ARREGLAR
+        if (products[rowIndex].items.length === 0) {
+          deleteRow(rowIndex);
+        }
       }
     },
   });
@@ -57,7 +62,7 @@ const Item = ({
           drag(drop(node));
         }
       }}
-      className="w-1/3 flex justify-center relative cursor-grab"
+      className="w-1/3 flex justify-center relative cursor-grab py-4"
       style={{ opacity: isDragging ? 0.5 : 1 }}
     >
       <div

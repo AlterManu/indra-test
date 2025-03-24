@@ -1,12 +1,13 @@
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Row from "./Row";
-import { RowModel } from "../models/item";
+import { RowModel } from "../models/models";
 import { useProducts } from "../context/useProducts";
+import ButtonAddRow from "./Buttons/ButtonAddRow";
 
 const DragAndDropBoard = () => {
   // * Hooks
-  const { products, setProducts, addRow } = useProducts();
+  const { products, setProducts } = useProducts();
 
   // * Methods
   const moveRow = (dragIndex: number, hoverIndex: number) => {
@@ -35,7 +36,7 @@ const DragAndDropBoard = () => {
   };
 
   return (
-    <div className="w-full px-10 mt-8 cursor-default">
+    <div className="w-full px-[5vw] mt-8 cursor-default">
       <DndProvider backend={HTML5Backend}>
         {products.map((product, rowIndex) => (
           <Row
@@ -49,14 +50,7 @@ const DragAndDropBoard = () => {
       </DndProvider>
 
       {/* Botón para añadir fila */}
-      <div className="w-full flex justify-center mt-5">
-        <button
-          onClick={addRow}
-          className="bg-slate-500 px-8 py-2 rounded-full cursor-pointer text-white"
-        >
-          + Añadir fila
-        </button>
-      </div>
+      <ButtonAddRow />
     </div>
   );
 };
