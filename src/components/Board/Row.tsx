@@ -1,12 +1,12 @@
-import { useDrag, useDrop } from "react-dnd";
-import { ItemType, RowModel, templateTypes } from "../../models/models";
-import Item from "./Item";
-import { useProducts } from "../../context/useProducts";
 import { useEffect, useRef } from "react";
+import { useDrag, useDrop } from "react-dnd";
 import dragIcon from "../../assets/img/drag.png";
+import { useProducts } from "../../context/useProducts";
+import { ItemType, RowModel, templateTypes } from "../../models/models";
 import ButtonAddElement from "../Buttons/ButtonAddElement";
-import ButtonDeleteRow from "../Buttons/ButtonDeleteRow";
 import ButtonChangeTemplate from "../Buttons/ButtonChangeTemplate";
+import ButtonDeleteRow from "../Buttons/ButtonDeleteRow";
+import Item from "./Item";
 
 const Row = ({
   row,
@@ -62,9 +62,9 @@ const Row = ({
     >
       <span
         ref={dragRef}
-        className="absolute top-1/2 -left-10 -translate-y-1/2 cursor-grab "
+        className="absolute top-1/2 -left-12 -translate-y-1/2 cursor-grab p-2 rounded-xl transition-all hover:bg-gray-200 duration-600 ease"
       >
-        <img className="w-8" src={dragIcon}></img>
+        <img className="w-6" src={dragIcon}></img>
       </span>
       <div
         className="w-full flex border-1 border-dashed border-[rgba(0,0,0,0.3)]"
