@@ -2,7 +2,7 @@ import { useDrag, useDrop } from "react-dnd";
 import { ItemType, RowModel, templateTypes } from "../../models/models";
 import Item from "./Item";
 import { useProducts } from "../../context/useProducts";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import dragIcon from "../../assets/img/drag.png";
 import ButtonAddElement from "../Buttons/ButtonAddElement";
 import ButtonDeleteRow from "../Buttons/ButtonDeleteRow";
@@ -44,9 +44,15 @@ const Row = ({
       }
     },
   });
-
   drag(dragRef);
   drop(rowRef);
+
+  // * Life Cycle
+  useEffect(() => {
+    if (row.items.length === 0) {
+      deleteRow(rowIndex); // Elimina autom. la fila si se queda vacía
+    }
+  }, [row.items.length]);
 
   return (
     <div

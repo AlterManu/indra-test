@@ -24,7 +24,7 @@ const Item = ({
   ) => void;
 }) => {
   // * Hooks
-  const { products, deleteItem, deleteRow } = useProducts();
+  const { products, deleteItem } = useProducts();
   const [isHover, setIsHover] = useState(false);
 
   const [{ isDragging }, drag] = useDrag({
@@ -46,11 +46,6 @@ const Item = ({
         moveItem(dragged.rowIndex, dragged.itemIndex, rowIndex, itemIndex);
         dragged.rowIndex = rowIndex;
         dragged.itemIndex = itemIndex;
-
-        // TODO: ARREGLAR
-        if (products[rowIndex].items.length === 0) {
-          deleteRow(rowIndex);
-        }
       }
     },
   });
