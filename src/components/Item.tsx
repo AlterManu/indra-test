@@ -3,6 +3,8 @@ import { ItemModel, ItemType } from "../models/item";
 import minusIcon from "../assets/img/minus2.png";
 import { useProducts } from "../context/useProducts";
 
+const MAX_ITEMS = 3;
+
 const Item = ({
   item,
   rowIndex,
@@ -20,7 +22,7 @@ const Item = ({
   ) => void;
 }) => {
   // * Hooks
-  const { deleteItem } = useProducts();
+  const { products, deleteItem } = useProducts();
 
   const [{ isDragging }, drag] = useDrag({
     type: ItemType.ITEM,
@@ -31,7 +33,13 @@ const Item = ({
   const [, drop] = useDrop({
     accept: ItemType.ITEM,
     hover: (dragged: { rowIndex: number; itemIndex: number }) => {
-      if (dragged.rowIndex !== rowIndex || dragged.itemIndex !== itemIndex) {
+      const isOtherRow = dragged.rowIndex !== rowIndex;
+      const isOtherItem = dragged.itemIndex !== itemIndex;
+
+      const destinyItemsLength = products[rowIndex].items.length;
+      const otherRowIsFull = destinyItemsLength >= MAX_ITEMS;
+
+      if ((isOtherRow && !otherRowIsFull) || (!isOtherRow && isOtherItem)) {
         moveItem(dragged.rowIndex, dragged.itemIndex, rowIndex, itemIndex);
         dragged.rowIndex = rowIndex;
         dragged.itemIndex = itemIndex;

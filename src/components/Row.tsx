@@ -1,5 +1,5 @@
 import { useDrag, useDrop } from "react-dnd";
-import { ItemModel, ItemType, RowModel, templateTypes } from "../models/item";
+import { ItemType, RowModel, templateTypes } from "../models/item";
 import Item from "./Item";
 import { useProducts } from "../context/useProducts";
 
@@ -52,7 +52,7 @@ const Row = ({
         className="w-full flex px-16 border-2 border-dashed border-[rgba(0,0,0,0.3)]"
         style={{ placeContent: templateTypes[row.template].place }}
       >
-        {row.items.map((item: ItemModel, itemIndex: number) => (
+        {row.items.map((item, itemIndex) => (
           <Item
             key={item.id}
             item={item}
@@ -67,8 +67,9 @@ const Row = ({
       <div className="absolute top-1/3 right-0 -translate-y-1/2 translate-x-1/2">
         <button
           onClick={() => addItem(rowIndex)}
-          disabled={row.items.length === 3}
           className="bg-slate-500 px-4 py-2 rounded-full cursor-pointer text-white"
+          disabled={row.items.length === 3}
+          style={{ opacity: row.items.length === 3 ? 0.5 : 1 }}
         >
           + Añadir elemento
         </button>
