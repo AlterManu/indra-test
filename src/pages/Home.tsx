@@ -4,26 +4,30 @@ import Gallery from "../components/Gallery/Gallery";
 import ZoomContainer from "../components/Board/ZoomContainer";
 import { useProducts } from "../context/useProducts";
 import { modes } from "../models/models";
-
+import Navbar from "../components/Navbar";
 export default function Home() {
   const { mode } = useProducts();
 
   return (
-    <main className="w-screen flex justify-center py-[4vh]">
-      <div className="container">
-        {mode === modes.EDITOR ? (
-          <>
-            <ZoomContainer>
-              <DragAndDropBoard />
-            </ZoomContainer>
-          </>
-        ) : (
-          <Gallery />
-        )}
+    <>
+      <Navbar />
 
-        {/* Botón de switch entre modos */}
-        <EditorButton />
-      </div>
-    </main>
+      <main className="w-screen flex justify-center my-[5%]">
+        <div className="container">
+          {mode === modes.EDITOR ? (
+            <>
+              <ZoomContainer>
+                <DragAndDropBoard />
+              </ZoomContainer>
+            </>
+          ) : (
+            <Gallery />
+          )}
+
+          {/* Botón de switch entre modos */}
+          <EditorButton />
+        </div>
+      </main>
+    </>
   );
 }
